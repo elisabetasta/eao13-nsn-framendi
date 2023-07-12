@@ -1,18 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 
 const Incident = ({ data }) => {
+  const { t } = useTranslation();
+
   const createdDate = new Date(data.created);
   const formattedDate = format(createdDate, 'dd.MM.yyyy');
   const formattedTime = createdDate.toLocaleTimeString([], { hour12: false }).slice(0, 5);
 
   return (
     <View style={styles.card}>
-      <Text accessibilityLabel="title" style={styles.titleText}>Title: {data.title}</Text>
-      <Text accessibilityLabel="description">Description: {data.description}</Text>
-      <Text accessibilityLabel="feedback">Feedback: {data.feedback}</Text>
-      <Text accessibilityLabel="created">Created: {formattedDate} - {formattedTime}</Text>
+        <Text accessibilityLabel="title" style={styles.titleText}>{t('Title')}: {data.title}</Text>
+        <Text accessibilityLabel="description">{t('Description')}: {data.description}</Text>
+        <Text accessibilityLabel="feedback">{t('Feedback')}: {data.feedback}</Text>
+        <Text accessibilityLabel="created">{t('Created')}: {formattedDate} kl. {formattedTime}</Text>
     </View>
   );
 };

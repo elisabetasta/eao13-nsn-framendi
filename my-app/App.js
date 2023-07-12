@@ -1,6 +1,9 @@
 import React from 'react';
+import 'intl-pluralrules';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import IncidentList from './src/components/IncidentList';
+import './src/i18n'
+
 
 export default function App() {
   return (
