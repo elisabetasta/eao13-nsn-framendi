@@ -20,5 +20,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
+  "resolutions": {
+    "expo/expo-asset": "8.9.1"
+  },  
   "private": true
 }
