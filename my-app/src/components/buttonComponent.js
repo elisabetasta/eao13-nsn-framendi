@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const ButtonComponent = ({ onRefresh }) => {
+const ButtonComponent = ({ title, onRefresh }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -41,7 +41,7 @@ const ButtonComponent = ({ onRefresh }) => {
       disabled={isLoading}
     >
       <Text style={styles.buttonText}>
-        {isLoading ? 'Loading...' : 'Refresh'}
+        {isLoading ? 'Loading...' : title}
       </Text>
     </TouchableOpacity>
   );

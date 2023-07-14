@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import IncidentList from './src/components/IncidentList';
 import { ButtonComponent } from './src/components/ButtonComponent';
 import './src/i18n';
+import { useTranslation } from 'react-i18next';
 
 export default function App() {
   const [refreshFlag, setRefreshFlag] = useState(false);
@@ -12,13 +13,15 @@ export default function App() {
     setRefreshFlag((prevFlag) => !prevFlag);
   };
 
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text>Header Component</Text>
       </View>
       <View style={styles.contentContainer}>
-        <ButtonComponent onRefresh={handleRefresh} />
+        <ButtonComponent title={t('Refresh')} onRefresh={handleRefresh} />
         <ScrollView style={styles.scrollContainer}>
           <IncidentList refreshFlag={refreshFlag} />
         </ScrollView>
