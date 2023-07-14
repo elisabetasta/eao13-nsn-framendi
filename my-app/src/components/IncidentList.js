@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { fetchData } from '../api/api';
 import Incident from './Incident';
-import {ButtonComponent} from './ButtonComponent'
+import {ButtonComponent} from './buttonComponent'
 
 const IncidentList = () => {
   const [incidentData, setIncidentData] = useState([]);
