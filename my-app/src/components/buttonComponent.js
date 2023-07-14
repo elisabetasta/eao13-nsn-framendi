@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const ButtonComponent = () => {
+const ButtonComponent = ({ onRefresh }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -21,10 +21,12 @@ const ButtonComponent = () => {
       })
       .then((responseData) => {
         setData(responseData);
-        console.log("fetched data check ", responseData)
+        console.log("refresh")
         // hér þarf að tengja svo hægt sé að birta í viðmótinu.
+        onRefresh();
       })
       .catch((error) => {
+        console.log("error :( ", error.message)
         setError(error.message);
       })
       .finally(() => {
@@ -39,7 +41,7 @@ const ButtonComponent = () => {
       disabled={isLoading}
     >
       <Text style={styles.buttonText}>
-        {isLoading ? 'Loading...' : 'Fetch Data'}
+        {isLoading ? 'Loading...' : 'Refresh'}
       </Text>
     </TouchableOpacity>
   );

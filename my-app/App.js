@@ -3,7 +3,6 @@ import 'intl-pluralrules';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import IncidentList from './src/components/IncidentList';
 import './src/i18n'
-import { ButtonComponent } from './src/components/buttonComponent'
 
 
 export default function App() {
@@ -11,7 +10,6 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text>Header Component</Text>
-        <ButtonComponent />
       </View>
       <ScrollView style={styles.scrollContainer}>
         <IncidentList />

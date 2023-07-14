@@ -8,6 +8,7 @@ const fetchData = async () => {
     const response = await axios.get(API_URL);
     const data = response.data;
     // Process the received data
+    // console.log("fetchData() ", data)
     return data;
   } catch (error) {
     // Handle any errors
@@ -16,3 +17,4 @@ const fetchData = async () => {
 };
 
 export { fetchData };
+
