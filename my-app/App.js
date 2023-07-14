@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'intl-pluralrules';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import IncidentList from './src/components/IncidentList';
-import './src/i18n'
-
+import { ButtonComponent } from './src/components/ButtonComponent';
+import './src/i18n';
 
 export default function App() {
+  const [refreshFlag, setRefreshFlag] = useState(false);
+
+  const handleRefresh = () => {
+    setRefreshFlag((prevFlag) => !prevFlag);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text>Header Component</Text>
       </View>
-      <ScrollView style={styles.scrollContainer}>
-        <IncidentList />
-      </ScrollView>
+      <View style={styles.contentContainer}>
+        <ButtonComponent onRefresh={handleRefresh} />
+        <ScrollView style={styles.scrollContainer}>
+          <IncidentList refreshFlag={refreshFlag} />
+        </ScrollView>
+      </View>
       <View style={styles.footer}>
         <Text>Footer Component</Text>
       </View>
@@ -31,6 +40,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ddd',
+  },
+  contentContainer: {
+    flex: 1,
   },
   scrollContainer: {
     flex: 1,
