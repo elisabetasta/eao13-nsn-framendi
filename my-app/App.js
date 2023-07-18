@@ -5,6 +5,11 @@ import IncidentList from './src/components/IncidentList';
 import { ButtonComponent } from './src/components/ButtonComponent';
 import './src/i18n';
 import { useTranslation } from 'react-i18next';
+import { NewIncident } from './src/components/NewIncident';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry, Button, Select } from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { theme } from './theme/theme';
 
 export default function App() {
   const [refreshFlag, setRefreshFlag] = useState(false);
@@ -16,20 +21,28 @@ export default function App() {
   const { t } = useTranslation();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text>Header Component</Text>
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <View style={styles.container}>
+        <View style={styles.header}>
+          <Text>Header Component</Text>
+        </View>
+        <View style={styles.contentContainer}>
+          <ButtonComponent title={t('Refresh')} onRefresh={handleRefresh} />
+          <NewIncident />
+          <ScrollView style={styles.scrollContainer}>
+            <IncidentList refreshFlag={refreshFlag} />
+          </ScrollView>
+        </View>
+        <View style={styles.footer}>
+          <Text>Footer Component</Text>
+        </View>
       </View>
-      <View style={styles.contentContainer}>
-        <ButtonComponent title={t('Refresh')} onRefresh={handleRefresh} />
-        <ScrollView style={styles.scrollContainer}>
-          <IncidentList refreshFlag={refreshFlag} />
-        </ScrollView>
-      </View>
-      <View style={styles.footer}>
-        <Text>Footer Component</Text>
-      </View>
-    </View>
+      </ApplicationProvider>
+    </>
+
+
   );
 }
 
