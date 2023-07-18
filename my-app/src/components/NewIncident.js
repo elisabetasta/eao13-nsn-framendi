@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 const NewIncident = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [feedback, setFeedback] = useState('');
 
   const handleCreateIncident = async () => {
-    
-
     const incidentData = {
       title,
       description,
@@ -40,7 +39,10 @@ const NewIncident = () => {
       alert('An error occurred. Please try again later.');
     }
   };
- 
+
+  const handleFeedbackSelection = (selectedFeedback) => {
+    setFeedback(selectedFeedback);
+  };
 
   return (
     <View style={styles.container}>
@@ -56,6 +58,39 @@ const NewIncident = () => {
         value={description}
         onChangeText={setDescription}
       />
+      <View style={styles.feedbackContainer}>
+  <TouchableOpacity
+    style={[
+      styles.feedbackOption,
+      feedback === 'positive' && styles.feedbackOptionSelected,
+      feedback === 'positive' && styles.positive,
+    ]}
+    onPress={() => handleFeedbackSelection('positive')}
+  >
+    <Text style={styles.feedbackText}>Positive</Text>
+  </TouchableOpacity>
+  <TouchableOpacity
+    style={[
+      styles.feedbackOption,
+      feedback === 'neutral' && styles.feedbackOptionSelected,
+      feedback === 'neutral' && styles.neutral,
+    ]}
+    onPress={() => handleFeedbackSelection('neutral')}
+  >
+    <Text style={styles.feedbackText}>Neutral</Text>
+  </TouchableOpacity>
+  <TouchableOpacity
+    style={[
+      styles.feedbackOption,
+      feedback === 'negative' && styles.feedbackOptionSelected,
+      feedback === 'negative' && styles.negative,
+    ]}
+    onPress={() => handleFeedbackSelection('negative')}
+  >
+    <Text style={styles.feedbackText}>Negative</Text>
+  </TouchableOpacity>
+</View>
+
       <Button title="Create Incident" onPress={handleCreateIncident} />
     </View>
   );
@@ -72,6 +107,56 @@ const styles = StyleSheet.create({
     padding: 8,
     marginBottom: 16,
   },
+  feedbackContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  feedbackOption: {
+    flex: 1,
+    height: 100,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  feedbackOptionSelected: {
+    borderWidth: 2,
+    borderColor: 'black',
+  },
+  feedbackText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  feedbackContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  feedbackOption: {
+    flex: 1,
+    height: 100,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  feedbackOptionSelected: {
+    borderWidth: 2,
+    borderColor: 'black',
+  },
+  feedbackText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  positive: {
+    backgroundColor: '#4CD964', // Green-ish color
+  },
+  neutral: {
+    backgroundColor: '#FFCC00', // Orange-ish color
+  },
+  negative: {
+    backgroundColor: '#FF3B30', // Red-ish color
+  },
+
 });
 
 export { NewIncident };
