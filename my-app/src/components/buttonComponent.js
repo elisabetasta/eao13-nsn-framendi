@@ -5,7 +5,8 @@ const ButtonComponent = ({ title, onRefresh }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const API_URL = 'http://localhost:3701/incidents' // er líka skilgreint í api.js, ætti bara að vera á einum stað
+  const API_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
+  console.log("APIURL: ", API_URL)
 
   const fetchData = () => {
     setIsLoading(true);

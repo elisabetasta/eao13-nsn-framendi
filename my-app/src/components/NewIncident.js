@@ -59,38 +59,37 @@ const NewIncident = () => {
         onChangeText={setDescription}
       />
       <View style={styles.feedbackContainer}>
-  <TouchableOpacity
-    style={[
-      styles.feedbackOption,
-      feedback === 'positive' && styles.feedbackOptionSelected,
-      feedback === 'positive' && styles.positive,
-    ]}
-    onPress={() => handleFeedbackSelection('positive')}
-  >
-    <Text style={styles.feedbackText}>Positive</Text>
-  </TouchableOpacity>
-  <TouchableOpacity
-    style={[
-      styles.feedbackOption,
-      feedback === 'neutral' && styles.feedbackOptionSelected,
-      feedback === 'neutral' && styles.neutral,
-    ]}
-    onPress={() => handleFeedbackSelection('neutral')}
-  >
-    <Text style={styles.feedbackText}>Neutral</Text>
-  </TouchableOpacity>
-  <TouchableOpacity
-    style={[
-      styles.feedbackOption,
-      feedback === 'negative' && styles.feedbackOptionSelected,
-      feedback === 'negative' && styles.negative,
-    ]}
-    onPress={() => handleFeedbackSelection('negative')}
-  >
-    <Text style={styles.feedbackText}>Negative</Text>
-  </TouchableOpacity>
-</View>
-
+        <TouchableOpacity
+          style={[
+            styles.feedbackOption,
+            feedback === 'positive' && styles.feedbackOptionSelected,
+            feedback === 'positive' && styles.positive,
+          ]}
+          onPress={() => handleFeedbackSelection('positive')}
+        >
+          <Text style={styles.feedbackText}>Positive</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.feedbackOption,
+            feedback === 'neutral' && styles.feedbackOptionSelected,
+            feedback === 'neutral' && styles.neutral,
+          ]}
+          onPress={() => handleFeedbackSelection('neutral')}
+        >
+          <Text style={styles.feedbackText}>Neutral</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.feedbackOption,
+            feedback === 'negative' && styles.feedbackOptionSelected,
+            feedback === 'negative' && styles.negative,
+          ]}
+          onPress={() => handleFeedbackSelection('negative')}
+        >
+          <Text style={styles.feedbackText}>Negative</Text>
+        </TouchableOpacity>
+      </View>
       <Button title="Create Incident" onPress={handleCreateIncident} />
     </View>
   );
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
   },
   feedbackOption: {
     flex: 1,
-    height: 100,
+    height: 30, // Adjust the height as needed
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -124,27 +123,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
   },
   feedbackText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  feedbackContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-  },
-  feedbackOption: {
-    flex: 1,
-    height: 100,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  feedbackOptionSelected: {
-    borderWidth: 2,
-    borderColor: 'black',
-  },
-  feedbackText: {
-    fontSize: 18,
+    fontSize: 16, // Adjust the font size as needed
     fontWeight: 'bold',
   },
   positive: {
@@ -156,7 +135,6 @@ const styles = StyleSheet.create({
   negative: {
     backgroundColor: '#FF3B30', // Red-ish color
   },
-
 });
 
 export { NewIncident };
