@@ -9,11 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@eva-design/eva": "^2.2.0",
     "@formatjs/icu-messageformat-parser": "^2.6.0",
-    "@react-native-picker/picker": "^2.4.10",
-    "@ui-kitten/components": "^5.3.1",
-    "@ui-kitten/eva-icons": "^5.3.1",
+    "@react-native-picker/picker": "2.4.10",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
