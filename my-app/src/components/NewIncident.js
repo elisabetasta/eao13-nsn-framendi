@@ -6,16 +6,30 @@ const NewIncident = () => {
   const [description, setDescription] = useState('');
   const [feedback, setFeedback] = useState('');
 
+  let feedback_id = ""; 
+  if (feedback === "positive") {
+    feedback_id = 1;
+  }
+  else if (feedback === "neutral") {
+    feedback_id = 2;
+
+  }
+  else if (feedback === "negative") {
+    feedback_id = 3;
+  }
+
   const handleCreateIncident = async () => {
     const incidentData = {
       title,
       description,
-      feedback,
+      feedback_id: feedback_id,
+      child_id: 1,
+      user_id: 1,
     };
 
     // Send POST request to the backend
     try {
-      const response = await fetch('http://localhost:3701/incidents', {
+      const response = await fetch('http://localhost:3017/incidents', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,13 +62,13 @@ const NewIncident = () => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Title"
+        placeholder="Titill"
         value={title}
         onChangeText={setTitle}
       />
       <TextInput
         style={styles.input}
-        placeholder="Description"
+        placeholder="Lýsing"
         value={description}
         onChangeText={setDescription}
       />

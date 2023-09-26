@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:3701/incidents'
+const API_URL = 'http://localhost:3017/incidents'
 // Define a function to fetch the data
 const fetchData = async () => {
   try {

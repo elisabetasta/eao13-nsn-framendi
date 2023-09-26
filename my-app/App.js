@@ -26,7 +26,10 @@ export default function App() {
       <ApplicationProvider {...eva} theme={eva.light}>
         <View style={styles.container}>
         <View style={styles.header}>
-          <Text>Header Component</Text>
+          <Text></Text>
+          <Text></Text>
+          <Text>Atvik</Text>
+          <Text style={styles.name}>Jón Gunnar Jónsson</Text>
         </View>
         <View style={styles.contentContainer}>
           <ButtonComponent title={t('Refresh')} onRefresh={handleRefresh} />
@@ -36,7 +39,7 @@ export default function App() {
           </ScrollView>
         </View>
         <View style={styles.footer}>
-          <Text>Footer Component</Text>
+          <Text>Skoða hópa</Text>
         </View>
       </View>
       </ApplicationProvider>
@@ -52,10 +55,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fgd',
   },
   header: {
-    height: 200,
+    height: 130,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ddd',
+  },
+  name: {
+    fontWeight: 'bold',
   },
   contentContainer: {
     flex: 1,
